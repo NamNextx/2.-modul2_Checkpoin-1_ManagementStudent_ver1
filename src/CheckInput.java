@@ -5,7 +5,7 @@ public class CheckInput {
 
     public static boolean checkContinue(String s) throws Exception {
         try {
-            //Kiểm tra điểm, điểm chỉ được lơn hơn hoặc bằng 0 và nhỏ hơn hoặc bằng 10
+
             if (s.equalsIgnoreCase("continue") || s.equalsIgnoreCase("new") || s.equalsIgnoreCase("cancel")) {
                 return true;
             } else {
@@ -24,7 +24,6 @@ public class CheckInput {
             } else {
                 return false;
             }
-
         } catch (Exception ex) {
             throw ex;
         }
@@ -40,5 +39,16 @@ public class CheckInput {
         if (score >= 0 && score <11) {
             return true;
         } else return false;
+    }
+
+    public static boolean checkAlready(ArrayList<Student> studentArrayList, String id) {
+
+        for (Student student : studentArrayList) {
+            if (student.getIdStudent().equalsIgnoreCase(id)) {
+                System.out.println("Already have this id");
+                return true;
+            }
+        }
+        return false;
     }
 }

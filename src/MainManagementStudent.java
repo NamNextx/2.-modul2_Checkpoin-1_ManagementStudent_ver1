@@ -1,17 +1,11 @@
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
-import java.util.*;
 
 public class MainManagementStudent {
     public static void main(String[] args) {
         try {
-            final int max = 100;
-
-            ArrayList<SinhVien> sinhViens = new ArrayList<>();
-            sinhViens.add(new SinhVien("1", "Hoang van nam", "male", 2, 2, 2));
+            ArrayList<Student> students = new ArrayList<>();
+            students.add(new Student("1", "Hoang van nam", "male", 2, 2, 2));
             Scanner scanner = new Scanner(System.in);
             int slected;
 
@@ -25,28 +19,28 @@ public class MainManagementStudent {
                 switch (slected) {
                     case 1: {
                         System.out.println("1. Enter new student");
-                        ManuManagement.addNewStudent(sinhViens);
+                        ManuManagement.addNewStudent(students);
                         break;
                     }
                     case 2: {
 //
                         System.out.println("2. Show list student");
-                        if (sinhViens.size() == 0) {
+                        if (students.size() == 0) {
                             System.out.println("List is empty");
                         } else {
-                            ManuManagement.outputSinhVien(sinhViens);
+                            ManuManagement.outputSinhVien(students);
                         }
                         break;
                     }
                     case 3: {
                         try {
                             System.out.println("3. Sort student follow total score");
-                            Collections.sort(sinhViens, new StudentIdConparator());
-                            sinhViens.sort(new StudentIdConparator());
-                            for (SinhVien sinhVien : sinhViens) {
-                                ManuManagement.outputSinhVien(sinhViens);
-                            }
 
+                            System.out.println("Pre-sort");
+                            ManuManagement.outputSinhVien(students);
+                            System.out.println("After-sort");
+                            students.sort(new StudentIdConparator());
+                            ManuManagement.outputSinhVien(students);
                             break;
                         } catch (Exception ex) {
                             throw ex;

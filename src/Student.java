@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class SinhVien {
+public class Student {
     private String idStudent;
     private String fullName;
     private String sexStudent;
@@ -9,23 +9,23 @@ public class SinhVien {
     private double chemistryScore;
 
 
-    public SinhVien() {
+    public Student() {
 
     }
 
-    public SinhVien(String idStudent, String fullName, String sexStudent) {
+    public Student(String idStudent, String fullName, String sexStudent) {
         this.idStudent = idStudent;
         this.fullName = fullName;
         this.sexStudent = sexStudent;
     }
 
-    public SinhVien(double mathScore, double physicalScore, double chemistryScore) {
+    public Student(double mathScore, double physicalScore, double chemistryScore) {
         this.mathScore = mathScore;
         this.physicalScore = physicalScore;
         this.chemistryScore = chemistryScore;
     }
 
-    public SinhVien(String idStudent, String fullName, String sexStudent, double mathScore, double physicalScore, double chemistryScore) {
+    public Student(String idStudent, String fullName, String sexStudent, double mathScore, double physicalScore, double chemistryScore) {
         this.idStudent = idStudent;
         this.fullName = fullName;
         this.sexStudent = sexStudent;

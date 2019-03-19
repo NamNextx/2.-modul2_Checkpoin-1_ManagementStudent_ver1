@@ -1,11 +1,12 @@
 import java.util.Comparator;
 
-public class StudentIdConparator implements Comparator<SinhVien> {
+public class StudentIdConparator implements Comparator<Student> {
 
     @Override
-    public int compare(SinhVien sinhVien1, SinhVien sinhVien2) {
-        int number1=Integer.parseInt(sinhVien1.getIdStudent());
-        int number2=Integer.parseInt(sinhVien2.getIdStudent());
+    public int compare(Student student1, Student student2) {
+        int number1=Integer.parseInt(student1.getIdStudent());
+        int number2=Integer.parseInt(student2.getIdStudent());
+
         if (number1 > number2) {
             return 1;
         } else if (number1 < number2) {

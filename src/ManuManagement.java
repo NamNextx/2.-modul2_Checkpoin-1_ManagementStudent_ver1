@@ -31,7 +31,7 @@ public class ManuManagement{
     }
 
 
-    public static void addNewStudent(ArrayList<SinhVien> student) {
+    public static void addNewStudent(ArrayList<Student> student) {
 
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -40,10 +40,11 @@ public class ManuManagement{
                 System.out.println("Pls enter ID of student");
                 id = inputBuffer.readLine();
             }
-            while (ManuManagement.checkAlready(student, id));
+            while (CheckInput.checkAlready(student, id));
 
-            SinhVien studentMember = new SinhVien();
+            Student studentMember = new Student();
             addElement(studentMember, id);
+
             student.add(studentMember);
 
         } catch (Exception ex) {
@@ -55,57 +56,46 @@ public class ManuManagement{
         }
     }
 
-    public static boolean checkAlready(ArrayList<SinhVien> student, String id) {
 
-        for (SinhVien sinhVien : student) {
-            if (sinhVien.getIdStudent().equalsIgnoreCase(id)) {
-                System.out.println("Already have this id");
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public static void addElement(SinhVien sinhVien, String id) {
+    public static void addElement(Student student, String id) {
         Scanner sc = new Scanner(System.in);
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
 
-            sinhVien.setIdStudent(id);
-            String dataInputString;
-            int dataInputInterger;
+            student.setIdStudent(id);
 
             do {
                 System.out.println("pls enter full name of student");
                // dataInputString = inputBuffer.readLine();
-                sinhVien.setFullName(inputBuffer.readLine());
+                student.setFullName(inputBuffer.readLine());
             }
-            while (!CheckInput.checkFullName(sinhVien.getFullName()));
+            while (!CheckInput.checkFullName(student.getFullName()));
 
             do {
                 System.out.println("Pls enter sex");
-                sinhVien.setSexStudent(inputBuffer.readLine());
-            } while (!CheckInput.checkSex(sinhVien.getSexStudent()));
+                student.setSexStudent(inputBuffer.readLine());
+            } while (!CheckInput.checkSex(student.getSexStudent()));
 
 
             do {
                 System.out.println("Pls enter mathScore");
-                sinhVien.setMathScore(sc.nextInt());
-            } while (!CheckInput.checkScore(sinhVien.getMathScore()));
+                student.setMathScore(sc.nextInt());
+            } while (!CheckInput.checkScore(student.getMathScore()));
 
             do {
                 System.out.println("Pls enter physicalScore");
                // dataInputInterger = sc.nextInt();
-                sinhVien.setPhysicalScore(sc.nextInt());
+                student.setPhysicalScore(sc.nextInt());
             }
-            while (!CheckInput.checkScore(sinhVien.getPhysicalScore()));
+            while (!CheckInput.checkScore(student.getPhysicalScore()));
 
 
             do {
                 System.out.println("Pls enter chemistryScore");
-                sinhVien.setChemistryScore(sc.nextInt());
+                student.setChemistryScore(sc.nextInt());
             }
-            while (!CheckInput.checkScore(sinhVien.getChemistryScore()));
+            while (!CheckInput.checkScore(student.getChemistryScore()));
 
 
         } catch (Exception ex) {
@@ -118,7 +108,7 @@ public class ManuManagement{
 
     }
 
-    public static void outputSinhVien(ArrayList<SinhVien> student) throws Exception
+    public static void outputSinhVien(ArrayList<Student> student) throws Exception
     {
         try
         {
