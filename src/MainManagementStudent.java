@@ -1,16 +1,21 @@
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
+import java.util.*;
 
-public class MainManagementStudent{
+public class MainManagementStudent {
     public static void main(String[] args) {
         try {
             final int max = 100;
 
-            ArrayList<SinhVien> student = new ArrayList<>();
+            ArrayList<SinhVien> sinhViens = new ArrayList<>();
+            sinhViens.add(new SinhVien("1", "Hoang van nam", "male", 2, 2, 2));
             Scanner scanner = new Scanner(System.in);
             int slected;
 
-         //   JavaG1.createStudent(javaG1s, count);
+            //   JavaG1.createStudent(javaG1s, count);
             do {
                 ManuManagement.showManu();
                 System.out.println("\n Enter your choice");
@@ -20,25 +25,33 @@ public class MainManagementStudent{
                 switch (slected) {
                     case 1: {
                         System.out.println("1. Enter new student");
-                        ManuManagement.addNewStudent(student);
+                        ManuManagement.addNewStudent(sinhViens);
                         break;
                     }
                     case 2: {
 //
                         System.out.println("2. Show list student");
-                        if (student.size()==0){
+                        if (sinhViens.size() == 0) {
                             System.out.println("List is empty");
-                        }
-                        else {
-                            for (SinhVien sinhVien : student) {
-                                ManuManagement.displayStuden(sinhVien,student);
-                            }
+                        } else {
+                            ManuManagement.outputSinhVien(sinhViens);
                         }
                         break;
                     }
                     case 3: {
-                        System.out.println("3. Sort student follow total score");
-                        break;
+                        try {
+                            System.out.println("3. Sort student follow total score");
+                            Collections.sort(sinhViens, new StudentIdConparator());
+                            sinhViens.sort(new StudentIdConparator());
+                            for (SinhVien sinhVien : sinhViens) {
+                                ManuManagement.outputSinhVien(sinhViens);
+                            }
+
+                            break;
+                        } catch (Exception ex) {
+                            throw ex;
+                        }
+
                     }
                     case 4: {
                         System.out.println("4. Check Score sum is sorted ?. ");
@@ -81,6 +94,7 @@ public class MainManagementStudent{
                 }
             } while (slected != 0);
             System.out.flush();
+
 
         } catch (Exception ex) {
             ex.printStackTrace();

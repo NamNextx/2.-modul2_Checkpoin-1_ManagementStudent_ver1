@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ManuManagement {
+public class ManuManagement{
 
 
     public static void printLine() {
@@ -30,13 +30,13 @@ public class ManuManagement {
         printLine();
     }
 
+
     public static void addNewStudent(ArrayList<SinhVien> student) {
 
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
             String id;
             do {
-
                 System.out.println("Pls enter ID of student");
                 id = inputBuffer.readLine();
             }
@@ -56,15 +56,14 @@ public class ManuManagement {
     }
 
     public static boolean checkAlready(ArrayList<SinhVien> student, String id) {
-        boolean flag = false;
+
         for (SinhVien sinhVien : student) {
-            if (sinhVien.getIdStudent().equalsIgnoreCase("id")) {
-                System.out.println("Already have");
-                flag = true;
-                break;
+            if (sinhVien.getIdStudent().equalsIgnoreCase(id)) {
+                System.out.println("Already have this id");
+                return true;
             }
         }
-        return flag;
+        return false;
     }
 
     public static void addElement(SinhVien sinhVien, String id) {
@@ -119,16 +118,26 @@ public class ManuManagement {
 
     }
 
-    public static void displayStuden(SinhVien studen,ArrayList<SinhVien> arrayList) throws Exception {
-        try {            printTile();
-            System.out.println();
-            System.out.printf("| %-10s|",arrayList.size());
-            System.out.printf(" %-10s | %-35s | %-9s | %-10.2f | %-10.2f | %-10.2f ", studen.getIdStudent(), studen.getFullName(), studen.getSexStudent(), studen.getMathScore(), studen.getPhysicalScore(), studen.getChemistryScore());
+    public static void outputSinhVien(ArrayList<SinhVien> student) throws Exception
+    {
+        try
+        {
+            printTile();//in ra tiêu đề
 
-        } catch (Exception ex) {
+            for(int i = 0; i < student.size(); i++)
+            {
+                System.out.printf("\n| %-10d |", i + 1);
+                student.get(i).displaySinhVien();
+                System.out.printf("| %-10.2f |", student.get(i).getSumScore());
+                printFormat();//in ra các line
+            }
+        }
+        catch(Exception ex)
+        {
             throw ex;
         }
     }
+
     public static void printFormat() {
         System.out.println();
         for (int i = 1; i <= 129; i++) {
