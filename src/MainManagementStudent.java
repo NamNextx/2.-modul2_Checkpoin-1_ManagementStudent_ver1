@@ -2,10 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainManagementStudent {
+    static ArrayList<Student> students = new ArrayList<>();
+
     public static void main(String[] args) {
         try {
-            ArrayList<Student> students = new ArrayList<>();
-            students.add(new Student("1", "Hoang van nam", "male", 2, 2, 2));
+            // Add first student to list
+
+            MainManagementStudent.addStudent();
+
             Scanner scanner = new Scanner(System.in);
             int slected;
 
@@ -95,5 +99,10 @@ public class MainManagementStudent {
             System.err.print("Bạn nhập sai chương trình tự động kết thúc.");
             System.exit(0);
         }
+    }
+    public static void addStudent(){
+        students.add(new Student("1", "Hoang van A", "male", 2, 2, 2));
+        students.add(new Student("3", "Hoang van B", "male", 2, 2, 2));
+        students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
     }
 }

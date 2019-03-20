@@ -113,7 +113,6 @@ public class ManuManagement{
         try
         {
             printTile();//in ra tiêu đề
-
             for(int i = 0; i < student.size(); i++)
             {
                 System.out.printf("\n| %-10d |", i + 1);
