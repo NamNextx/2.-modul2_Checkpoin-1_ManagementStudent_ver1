@@ -10,24 +10,25 @@ public class MainManagementStudent {
         try {
             Scanner scanner = new Scanner(System.in);
             // Add first 3 student in list
-            ManuManagement manuManagement=new ManuManagement();
+            ManuManagement manuManagement = new ManuManagement();
             manuManagement.addStudents();
 
             int selected;
 
             do {
                 ManuManagement.showManu();
+
                 System.out.println("\n Enter your choice");
                 selected = scanner.nextInt();
                 System.out.flush();
 
                 switch (selected) {
                     case 1: {
-/*
-System.out.println("1. Enter new student");
-ManuManagement.addNewStudent(students);
-break;
-*/
+
+                        System.out.println("1. Enter new student");
+                       // ManuManagement.addNewStudent(students);
+                        break;
+
                     }
                     case 2: {
 //

@@ -2,7 +2,8 @@ public interface IStudentTest {
 
      void showListStudent() throws Exception;
 
-    //public boolean addNewStudent();
+
+     void addNewStudent() throws Exception;
     /*
     public void sortStudentSumScore();
     public void findSudentIdStudent();

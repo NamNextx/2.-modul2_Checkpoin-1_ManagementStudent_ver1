@@ -37,8 +37,7 @@ public class ManuManagement implements IStudentTest {
     }
 
 
-   /* public static void addNewStudent(ArrayList<Student> student) {
-
+    public  void addNewStudent() throws Exception{
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
             String id;
@@ -60,8 +59,7 @@ public class ManuManagement implements IStudentTest {
             System.exit(0);
 
         }
-    }*/
-
+    }
 
     public static void addElement(Student student, String id) {
         Scanner sc = new Scanner(System.in);
