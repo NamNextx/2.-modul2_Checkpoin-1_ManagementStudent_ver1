@@ -51,4 +51,16 @@ public class CheckInput {
         }
         return false;
     }
+
+    public static boolean checkAready(String index){
+
+        boolean flag=false;
+        for (Student student: MainManagementStudent.students){
+            if (student.getIdStudent().equalsIgnoreCase(index)){
+                flag=true;
+            }
+        }
+        return flag;
+
+    }
 }

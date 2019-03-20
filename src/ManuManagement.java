@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ManuManagement{
+public class ManuManagement {
 
 
     public static void printLine() {
@@ -57,7 +57,6 @@ public class ManuManagement{
     }
 
 
-
     public static void addElement(Student student, String id) {
         Scanner sc = new Scanner(System.in);
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
@@ -67,7 +66,7 @@ public class ManuManagement{
 
             do {
                 System.out.println("pls enter full name of student");
-               // dataInputString = inputBuffer.readLine();
+                // dataInputString = inputBuffer.readLine();
                 student.setFullName(inputBuffer.readLine());
             }
             while (!CheckInput.checkFullName(student.getFullName()));
@@ -85,7 +84,7 @@ public class ManuManagement{
 
             do {
                 System.out.println("Pls enter physicalScore");
-               // dataInputInterger = sc.nextInt();
+                // dataInputInterger = sc.nextInt();
                 student.setPhysicalScore(sc.nextInt());
             }
             while (!CheckInput.checkScore(student.getPhysicalScore()));
@@ -108,21 +107,16 @@ public class ManuManagement{
 
     }
 
-    public static void outputSinhVien(ArrayList<Student> student) throws Exception
-    {
-        try
-        {
+    public static void outputSinhVien(ArrayList<Student> student) throws Exception {
+        try {
             printTile();//in ra tiêu đề
-            for(int i = 0; i < student.size(); i++)
-            {
+            for (int i = 0; i < student.size(); i++) {
                 System.out.printf("\n| %-10d |", i + 1);
                 student.get(i).displaySinhVien();
                 System.out.printf("| %-10.2f |", student.get(i).getSumScore());
                 printFormat();//in ra các line
             }
-        }
-        catch(Exception ex)
-        {
+        } catch (Exception ex) {
             throw ex;
         }
     }
@@ -137,9 +131,29 @@ public class ManuManagement{
             }
         }
     }
+
     public static void printTile() {
         printFormat();
         System.out.printf("\n| %-10s | %-10s | %-35s | %-9s | %-10s | %-10s | %-10s | %-10s |", "STT", "Mã SV", "Họ Và Tên", "Giới Tính", "Điểm Toán", "Điểm Lý", "Điểm Hóa", "Tổng Điểm");
         printFormat();
+    }
+
+    public static void editSinhVien() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+            //System.out.println(" Pls input id of student you want rename");
+            String idIndex = scanner.nextLine();
+
+            if (CheckInput.checkAready(idIndex)) {
+                System.out.println("Pls input name you want to rename");
+                MainManagementStudent.students.get(Integer.parseInt(idIndex)-1).setFullName(scanner.nextLine());
+            } else {
+                System.out.println("Dont have this id in List");
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
+
+
     }
 }

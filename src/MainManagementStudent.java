@@ -2,11 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainManagementStudent {
+
+    //public static Student sv=new Student();
     static ArrayList<Student> students = new ArrayList<>();
+
 
     public static void main(String[] args) {
         try {
             // Add first student to list
+          //  ArrayList<Student> students = new ArrayList<>();
 
             MainManagementStudent.addStudent();
 
@@ -60,12 +64,12 @@ public class MainManagementStudent {
                         break;
                     }
                     case 6: {
-//                        if (count.getCountStudent() == 0) {
-//                            System.out.println("Chưa có sinh viên nào trong danh sách bạn hãy chọn menu 1 để nhập các thông tin cho sinh viên.");
-//                        } else {
-//                            System.out.print("\n6. Sửa tên sinh viên có mã được nhập từ bàn phím.");
-//                            CheckInput.editSinhVien(javaG1s, count.getCountStudent());
-//                        }
+                        if (students.size()<=0) {
+                            System.out.println("List is empty, pls press '1' to add new student to list");
+                        } else {
+                            System.out.print("\n6. Rename student: pls input id of student");
+                            ManuManagement.editSinhVien();
+                        }
 
                         break;
                     }
@@ -100,9 +104,9 @@ public class MainManagementStudent {
             System.exit(0);
         }
     }
-    public static void addStudent(){
+    public  static void addStudent(){
         students.add(new Student("1", "Hoang van A", "male", 2, 2, 2));
-        students.add(new Student("3", "Hoang van B", "male", 2, 2, 2));
+        students.add(new Student("2", "Hoang van B", "male", 2, 2, 2));
         students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
     }
 }
