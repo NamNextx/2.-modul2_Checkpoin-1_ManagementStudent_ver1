@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class ManuManagement implements IStudentTest {
     ArrayList<Student> students = new ArrayList<>();
 
-    public void addStudents(){
+    public void addStudents() {
         students.add(new Student("1", "Hoang van A", "male", 2, 2, 2));
-        students.add(new Student("2", "Hoang van B", "male", 2, 2, 2));
+        students.add(new Student("4", "Hoang van B", "male", 2, 2, 2));
         students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
     }
 
@@ -37,20 +37,24 @@ public class ManuManagement implements IStudentTest {
     }
 
 
-    public  void addNewStudent() throws Exception{
+    public void addNewStudent() throws Exception {
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
             String id;
             do {
                 System.out.println("Pls enter ID of student");
                 id = inputBuffer.readLine();
+                if (checkAlready(id)) {
+                    System.out.println("Already have this id");
+                }
             }
-            while (CheckInput.checkAlready(id));
+            while (checkAlready(id));
 
             Student studentMember = new Student();
+
             addElement(studentMember, id);
 
-            student.add(studentMember);
+            students.add(studentMember);
 
         } catch (Exception ex) {
 
@@ -59,6 +63,21 @@ public class ManuManagement implements IStudentTest {
             System.exit(0);
 
         }
+    }
+
+    private boolean checkAlready(String id) throws Exception {
+        try {
+            for (Student student : students) {
+                if (student.getIdStudent().equalsIgnoreCase(id)) {
+
+                    return true;
+                }
+            }
+            return false;
+        } catch (Exception ex) {
+            throw ex;
+        }
+
     }
 
     public static void addElement(Student student, String id) {
@@ -110,6 +129,7 @@ public class ManuManagement implements IStudentTest {
         }
 
     }
+
     @Override
     public void showListStudent() throws Exception {
         try {
@@ -126,7 +146,7 @@ public class ManuManagement implements IStudentTest {
     }
 
 
-    public static void printFormat() {
+    private static void printFormat() {
         System.out.println();
         for (int i = 1; i <= 129; i++) {
             if (i == 1 || i == 14 || i == 27 || i == 65 || i == 77 || i == 90 || i == 103 || i == 116 || i == 129) {
@@ -137,21 +157,40 @@ public class ManuManagement implements IStudentTest {
         }
     }
 
-    public static void printTile() {
+    private static void printTile() {
         printFormat();
         System.out.printf("\n| %-10s | %-10s | %-35s | %-9s | %-10s | %-10s | %-10s | %-10s |", "STT", "Mã SV", "Họ Và Tên", "Giới Tính", "Điểm Toán", "Điểm Lý", "Điểm Hóa", "Tổng Điểm");
         printFormat();
     }
 
-    /*public static void editSinhVien() {
+    @Override
+    public void sortStudentByID() throws Exception {
+        System.out.println("Pre-sort");
+        showListStudent();
+        System.out.println("After-sort");
+        students.sort(new StudentIdConparator());
+        showListStudent();
+    }
+
+
+    public void renameStudent() throws Exception {
+        if (students.size() <= 0) {
+            System.out.println("List is empty, pls press '1' to add new student to list");
+        } else {
+            System.out.println("----Pls input id of student you want to rename-----");
+            reNameStudentAddIndex();
+        }
+    }
+
+    @Override
+    public void reNameStudentAddIndex() throws Exception {
         try {
             Scanner scanner = new Scanner(System.in);
-            //System.out.println(" Pls input id of student you want rename");
-            String idIndex = scanner.nextLine();
 
-            if (CheckInput.checkAlready(idIndex)) {
+            String idIndex = scanner.nextLine();
+            if (checkAlready(idIndex)) {
                 System.out.println("Pls input name you want to rename");
-              //  MainManagementStudent.students.get(Integer.parseInt(idIndex)-1).setFullName(scanner.nextLine());
+                students.get(Integer.parseInt(idIndex) - 1).setFullName(scanner.nextLine());
             } else {
                 System.out.println("Dont have this id in List");
             }
@@ -160,5 +199,60 @@ public class ManuManagement implements IStudentTest {
         }
 
 
-    }*/
+    }
+
+    public void removeStudent() throws Exception {
+        try {
+            Scanner sc = new Scanner(System.in);
+            if (students.size() == 0) {
+                System.out.println("List Student is empty, choice 1 to import new Student");
+            } else {
+                System.out.println("Pls input id of student you want to remove");
+                String idOfstudent = sc.nextLine();
+                if (checkAlready(idOfstudent)) {
+                    removeStudentAddIndex(idOfstudent);
+                } else System.out.println("Dont have student with this id");
+
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    @Override
+    public void removeStudentAddIndex(String idOfStudent) throws Exception {
+        try {
+            int idInt = Integer.parseInt(idOfStudent);
+            students.remove(idInt - 1);
+            System.out.println("Removed");
+        } catch (Exception ex) {
+            throw ex;
+        }
+
+    }
+
+    public void findStudent() throws Exception {
+        BufferedReader choice = new BufferedReader(new InputStreamReader(System.in));
+        do {
+            System.out.println("Choice what do you want");
+            System.out.println("1. find by max sum score of student");
+            System.out.println("2. Fine buy min sum score of student");
+
+            switch (choice.readLine()) {
+
+            }
+
+        }
+        while (1);
+        findStudentSumScore();
+    }
+
+    @Override
+    public void findStudentSumScore() throws Exception {
+        try {
+
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }

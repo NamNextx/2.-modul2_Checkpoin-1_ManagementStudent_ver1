@@ -41,14 +41,5 @@ public class CheckInput {
         } else return false;
     }
 
-    /*public static boolean checkAlready(String id) {
 
-        for (Student student : MainManagementStudent.students) {
-            if (student.getIdStudent().equalsIgnoreCase(id)) {
-                System.out.println("Already have this id");
-                return true;
-            }
-        }
-        return false;
-    }*/
 }

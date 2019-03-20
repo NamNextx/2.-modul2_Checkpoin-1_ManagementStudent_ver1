@@ -4,11 +4,15 @@ public interface IStudentTest {
 
 
      void addNewStudent() throws Exception;
+     void sortStudentByID()throws Exception;
+     void reNameStudentAddIndex() throws Exception;
+     void removeStudentAddIndex(String idOfStudent) throws Exception;
+     void findStudentSumScore() throws Exception;
     /*
-    public void sortStudentSumScore();
+
     public void findSudentIdStudent();
     public void refactorStudent();
-    public void removeStudent();
+
     public void checkStudent();
     */
 }

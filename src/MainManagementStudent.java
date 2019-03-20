@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainManagementStudent {
@@ -26,12 +25,11 @@ public class MainManagementStudent {
                     case 1: {
 
                         System.out.println("1. Enter new student");
-                       // ManuManagement.addNewStudent(students);
+                        manuManagement.addNewStudent();
                         break;
 
                     }
                     case 2: {
-//
                         System.out.println("2. Show list student");
                         if (manuManagement.students.size() == 0) {
                             System.out.println("List is empty");
@@ -41,18 +39,13 @@ public class MainManagementStudent {
                         break;
                     }
                     case 3: {
-                       /* try {
-                            System.out.println("3. Sort student follow total score");
-
-                            System.out.println("Pre-sort");
-                            manuManagement.showListStudent();
-                            System.out.println("After-sort");
-                            students.sort(new StudentIdConparator());
-                            manuManagement.showListStudent();
+                        try {
+                            System.out.println("3. Sort student by ID");
+                            manuManagement.sortStudentByID();
                             break;
                         } catch (Exception ex) {
                             throw ex;
-                        }*/
+                        }
 
                     }
                     case 4: {
@@ -64,32 +57,22 @@ public class MainManagementStudent {
                         break;
                     }
                     case 6: {
-                        /*if (students.size() <= 0) {
-                            System.out.println("List is empty, pls press '1' to add new student to list");
-                        } else {
-                            System.out.print("\n6. Rename student: pls input id of student");
-                            ManuManagement.editSinhVien();
-                        }
-
-                        break;*/
+                        System.out.println("6. Rename student use index of student");
+                        manuManagement.renameStudent();
+                        break;
                     }
                     case 7: {
-//                        if (count.getCountStudent() == 0) {
-//                            System.out.println("Chưa có sinh viên nào trong danh sách bạn hãy chọn menu 1 để nhập các thông tin cho sinh viên.");
-//                        } else {
-//                            System.out.print("\n7. Xóa sinh viên có mã sinh viên được nhập từ bàn phím.");
-//                            CheckInput.removeAt(javaG1s, count);
-//                        }
-
+                        System.out.println("7. Remove student with id input from keyboa");
+                        manuManagement.removeStudent();
                         break;
                     }
 
                     case 0: {
-                        System.out.println("Kết thúc.");
+                        System.out.println("End process");
                         break;
                     }
                     default: {
-                        System.out.println("Chương trình không có chức năng này.");
+                        System.out.println("Process have no this function");
                         break;
                     }
 
@@ -100,7 +83,7 @@ public class MainManagementStudent {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.err.print("Bạn nhập sai chương trình tự động kết thúc.");
+            System.err.print("Your choice is incorrect");
             System.exit(0);
         }
     }
