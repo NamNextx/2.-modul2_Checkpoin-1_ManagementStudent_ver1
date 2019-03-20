@@ -41,26 +41,14 @@ public class CheckInput {
         } else return false;
     }
 
-    public static boolean checkAlready(ArrayList<Student> studentArrayList, String id) {
+    /*public static boolean checkAlready(String id) {
 
-        for (Student student : studentArrayList) {
+        for (Student student : MainManagementStudent.students) {
             if (student.getIdStudent().equalsIgnoreCase(id)) {
                 System.out.println("Already have this id");
                 return true;
             }
         }
         return false;
-    }
-
-    public static boolean checkAready(String index){
-
-        boolean flag=false;
-        for (Student student: MainManagementStudent.students){
-            if (student.getIdStudent().equalsIgnoreCase(index)){
-                flag=true;
-            }
-        }
-        return flag;
-
-    }
+    }*/
 }

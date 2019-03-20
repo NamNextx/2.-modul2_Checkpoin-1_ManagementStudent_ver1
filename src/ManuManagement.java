@@ -3,8 +3,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ManuManagement {
+public class ManuManagement implements IStudentTest {
+    ArrayList<Student> students = new ArrayList<>();
 
+    public void addStudents(){
+        students.add(new Student("1", "Hoang van A", "male", 2, 2, 2));
+        students.add(new Student("2", "Hoang van B", "male", 2, 2, 2));
+        students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
+    }
 
     public static void printLine() {
         for (int i = 0; i <= 100; i++) {
@@ -31,7 +37,7 @@ public class ManuManagement {
     }
 
 
-    public static void addNewStudent(ArrayList<Student> student) {
+   /* public static void addNewStudent(ArrayList<Student> student) {
 
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -40,7 +46,7 @@ public class ManuManagement {
                 System.out.println("Pls enter ID of student");
                 id = inputBuffer.readLine();
             }
-            while (CheckInput.checkAlready(student, id));
+            while (CheckInput.checkAlready(id));
 
             Student studentMember = new Student();
             addElement(studentMember, id);
@@ -54,7 +60,7 @@ public class ManuManagement {
             System.exit(0);
 
         }
-    }
+    }*/
 
 
     public static void addElement(Student student, String id) {
@@ -106,20 +112,21 @@ public class ManuManagement {
         }
 
     }
-
-    public static void outputSinhVien(ArrayList<Student> student) throws Exception {
+    @Override
+    public void showListStudent() throws Exception {
         try {
             printTile();//in ra tiêu đề
-            for (int i = 0; i < student.size(); i++) {
+            for (int i = 0; i < students.size(); i++) {
                 System.out.printf("\n| %-10d |", i + 1);
-                student.get(i).displaySinhVien();
-                System.out.printf("| %-10.2f |", student.get(i).getSumScore());
+                students.get(i).displaySinhVien();
+                System.out.printf("| %-10.2f |", students.get(i).getSumScore());
                 printFormat();//in ra các line
             }
         } catch (Exception ex) {
             throw ex;
         }
     }
+
 
     public static void printFormat() {
         System.out.println();
@@ -138,15 +145,15 @@ public class ManuManagement {
         printFormat();
     }
 
-    public static void editSinhVien() {
+    /*public static void editSinhVien() {
         try {
             Scanner scanner = new Scanner(System.in);
             //System.out.println(" Pls input id of student you want rename");
             String idIndex = scanner.nextLine();
 
-            if (CheckInput.checkAready(idIndex)) {
+            if (CheckInput.checkAlready(idIndex)) {
                 System.out.println("Pls input name you want to rename");
-                MainManagementStudent.students.get(Integer.parseInt(idIndex)-1).setFullName(scanner.nextLine());
+              //  MainManagementStudent.students.get(Integer.parseInt(idIndex)-1).setFullName(scanner.nextLine());
             } else {
                 System.out.println("Dont have this id in List");
             }
@@ -155,5 +162,5 @@ public class ManuManagement {
         }
 
 
-    }
+    }*/
 }

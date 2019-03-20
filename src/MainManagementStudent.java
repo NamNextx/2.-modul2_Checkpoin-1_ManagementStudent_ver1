@@ -4,55 +4,54 @@ import java.util.Scanner;
 public class MainManagementStudent {
 
     //public static Student sv=new Student();
-    static ArrayList<Student> students = new ArrayList<>();
 
 
     public static void main(String[] args) {
         try {
-            // Add first student to list
-          //  ArrayList<Student> students = new ArrayList<>();
-
-            MainManagementStudent.addStudent();
-
             Scanner scanner = new Scanner(System.in);
-            int slected;
+            // Add first 3 student in list
+            ManuManagement manuManagement=new ManuManagement();
+            manuManagement.addStudents();
 
-            //   JavaG1.createStudent(javaG1s, count);
+            int selected;
+
             do {
                 ManuManagement.showManu();
                 System.out.println("\n Enter your choice");
-                slected = scanner.nextInt();
+                selected = scanner.nextInt();
                 System.out.flush();
 
-                switch (slected) {
+                switch (selected) {
                     case 1: {
-                        System.out.println("1. Enter new student");
-                        ManuManagement.addNewStudent(students);
-                        break;
+/*
+System.out.println("1. Enter new student");
+ManuManagement.addNewStudent(students);
+break;
+*/
                     }
                     case 2: {
 //
                         System.out.println("2. Show list student");
-                        if (students.size() == 0) {
+                        if (manuManagement.students.size() == 0) {
                             System.out.println("List is empty");
                         } else {
-                            ManuManagement.outputSinhVien(students);
+                            manuManagement.showListStudent();
                         }
                         break;
                     }
                     case 3: {
-                        try {
+                       /* try {
                             System.out.println("3. Sort student follow total score");
 
                             System.out.println("Pre-sort");
-                            ManuManagement.outputSinhVien(students);
+                            manuManagement.showListStudent();
                             System.out.println("After-sort");
                             students.sort(new StudentIdConparator());
-                            ManuManagement.outputSinhVien(students);
+                            manuManagement.showListStudent();
                             break;
                         } catch (Exception ex) {
                             throw ex;
-                        }
+                        }*/
 
                     }
                     case 4: {
@@ -64,14 +63,14 @@ public class MainManagementStudent {
                         break;
                     }
                     case 6: {
-                        if (students.size()<=0) {
+                        /*if (students.size() <= 0) {
                             System.out.println("List is empty, pls press '1' to add new student to list");
                         } else {
                             System.out.print("\n6. Rename student: pls input id of student");
                             ManuManagement.editSinhVien();
                         }
 
-                        break;
+                        break;*/
                     }
                     case 7: {
 //                        if (count.getCountStudent() == 0) {
@@ -94,7 +93,7 @@ public class MainManagementStudent {
                     }
 
                 }
-            } while (slected != 0);
+            } while (selected != 0);
             System.out.flush();
 
 
@@ -103,10 +102,5 @@ public class MainManagementStudent {
             System.err.print("Bạn nhập sai chương trình tự động kết thúc.");
             System.exit(0);
         }
-    }
-    public  static void addStudent(){
-        students.add(new Student("1", "Hoang van A", "male", 2, 2, 2));
-        students.add(new Student("2", "Hoang van B", "male", 2, 2, 2));
-        students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
     }
 }
