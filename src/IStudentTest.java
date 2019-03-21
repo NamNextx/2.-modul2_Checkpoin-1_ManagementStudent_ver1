@@ -7,7 +7,7 @@ public interface IStudentTest {
      void sortStudentByID()throws Exception;
      void reNameStudentAddIndex() throws Exception;
      void removeStudentAddIndex(String idOfStudent) throws Exception;
-     void findStudentSumScore() throws Exception;
+     Student findStudentSumScoreMax() throws Exception;
     /*
 
     public void findSudentIdStudent();

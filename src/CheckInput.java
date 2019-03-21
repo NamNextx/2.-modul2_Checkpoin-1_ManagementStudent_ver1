@@ -1,8 +1,6 @@
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class CheckInput {
-
+/*
     public static boolean checkContinue(String s) throws Exception {
         try {
 
@@ -14,8 +12,7 @@ public class CheckInput {
         } catch (Exception ex) {
             throw ex;
         }
-    }
-
+    }*/
 
     public static boolean checkFullName(String fullName) throws Exception {
         try {

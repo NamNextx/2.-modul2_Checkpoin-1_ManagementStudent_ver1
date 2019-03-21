@@ -7,8 +7,8 @@ public class ManuManagement implements IStudentTest {
     ArrayList<Student> students = new ArrayList<>();
 
     public void addStudents() {
-        students.add(new Student("1", "Hoang van A", "male", 2, 2, 2));
-        students.add(new Student("4", "Hoang van B", "male", 2, 2, 2));
+        students.add(new Student("1", "Hoang van A", "male", 2, 1, 2));
+        students.add(new Student("4", "Hoang van B", "male", 2, 3, 2));
         students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
     }
 
@@ -36,7 +36,24 @@ public class ManuManagement implements IStudentTest {
         printLine();
     }
 
+    private static void printFormat() {
+        System.out.println();
+        for (int i = 1; i <= 129; i++) {
+            if (i == 1 || i == 14 || i == 27 || i == 65 || i == 77 || i == 90 || i == 103 || i == 116 || i == 129) {
+                System.out.print("+");
+            } else {
+                System.out.print("-");
+            }
+        }
+    }
 
+    private static void printTile() {
+        printFormat();
+        System.out.printf("\n| %-10s | %-10s | %-35s | %-9s | %-10s | %-10s | %-10s | %-10s |", "STT", "Mã SV", "Họ Và Tên", "Giới Tính", "Điểm Toán", "Điểm Lý", "Điểm Hóa", "Tổng Điểm");
+        printFormat();
+    }
+
+    @Override
     public void addNewStudent() throws Exception {
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -145,30 +162,12 @@ public class ManuManagement implements IStudentTest {
         }
     }
 
-
-    private static void printFormat() {
-        System.out.println();
-        for (int i = 1; i <= 129; i++) {
-            if (i == 1 || i == 14 || i == 27 || i == 65 || i == 77 || i == 90 || i == 103 || i == 116 || i == 129) {
-                System.out.print("+");
-            } else {
-                System.out.print("-");
-            }
-        }
-    }
-
-    private static void printTile() {
-        printFormat();
-        System.out.printf("\n| %-10s | %-10s | %-35s | %-9s | %-10s | %-10s | %-10s | %-10s |", "STT", "Mã SV", "Họ Và Tên", "Giới Tính", "Điểm Toán", "Điểm Lý", "Điểm Hóa", "Tổng Điểm");
-        printFormat();
-    }
-
     @Override
     public void sortStudentByID() throws Exception {
         System.out.println("Pre-sort");
         showListStudent();
         System.out.println("After-sort");
-        students.sort(new StudentIdConparator());
+        students.sort(new StudentIdComparator());
         showListStudent();
     }
 
@@ -232,27 +231,71 @@ public class ManuManagement implements IStudentTest {
     }
 
     public void findStudent() throws Exception {
-        BufferedReader choice = new BufferedReader(new InputStreamReader(System.in));
-        do {
-            System.out.println("Choice what do you want");
-            System.out.println("1. find by max sum score of student");
-            System.out.println("2. Fine buy min sum score of student");
+        try {
+            Scanner choice = new Scanner(System.in);
+            int selected;
+            do {
+                System.out.println("Choice what do you want");
+                System.out.println("1. find by max sum score of student");
+                System.out.println("2. Fine buy min sum score of student");
+                System.out.print("0. Exit");
+                selected = choice.nextInt();
 
-            switch (choice.readLine()) {
+                switch (selected) {
+                    case 1: {
+                        System.out.println("Student have max score is: ");
+                        showOneStudent();
+                        break;
+                    }
+                    case 2: {
+                        /* need update method fine min of score */
+                        break;
+                    }
+                    case 0: {
+                        break;
+                    }
+                }
 
             }
+            while (selected != 0);
 
+        } catch (Exception ex) {
+            throw ex;
         }
-        while (1);
-        findStudentSumScore();
+
     }
 
     @Override
-    public void findStudentSumScore() throws Exception {
+    public Student findStudentSumScoreMax() throws Exception {
         try {
+            double max;
+            Student sv = students.get(0);
+            max = students.get(0).getSumScore();
+
+            for (Student students : students) {
+                if (max < students.getSumScore()) {
+                    max = students.getSumScore();
+                    sv = students;
+                }
+            }
+            return sv;
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    public void showOneStudent() throws Exception {
+        try {
+            printTile();//in ra tiêu đề
+            System.out.printf("\n| %-10d |", 1);
+            findStudentSumScoreMax().displaySinhVien();
+            System.out.printf("| %-10.2f |", findStudentSumScoreMax().getSumScore());
+            printFormat();//in ra các line
 
         } catch (Exception ex) {
             throw ex;
         }
     }
+
+
 }

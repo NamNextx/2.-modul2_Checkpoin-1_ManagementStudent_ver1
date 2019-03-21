@@ -2,9 +2,6 @@ import java.util.Scanner;
 
 public class MainManagementStudent {
 
-    //public static Student sv=new Student();
-
-
     public static void main(String[] args) {
         try {
             Scanner scanner = new Scanner(System.in);
@@ -20,7 +17,6 @@ public class MainManagementStudent {
                 System.out.println("\n Enter your choice");
                 selected = scanner.nextInt();
                 System.out.flush();
-
                 switch (selected) {
                     case 1: {
 
@@ -46,7 +42,6 @@ public class MainManagementStudent {
                         } catch (Exception ex) {
                             throw ex;
                         }
-
                     }
                     case 4: {
                         System.out.println("4. Check Score sum is sorted ?. ");
@@ -54,6 +49,7 @@ public class MainManagementStudent {
                     }
                     case 5: {
                         System.out.println("5. Search linearly by total points");
+                        manuManagement.findStudent();
                         break;
                     }
                     case 6: {
@@ -66,7 +62,6 @@ public class MainManagementStudent {
                         manuManagement.removeStudent();
                         break;
                     }
-
                     case 0: {
                         System.out.println("End process");
                         break;
@@ -75,12 +70,9 @@ public class MainManagementStudent {
                         System.out.println("Process have no this function");
                         break;
                     }
-
                 }
             } while (selected != 0);
             System.out.flush();
-
-
         } catch (Exception ex) {
             ex.printStackTrace();
             System.err.print("Your choice is incorrect");

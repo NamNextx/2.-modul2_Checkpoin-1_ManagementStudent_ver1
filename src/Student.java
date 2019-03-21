@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class Student {
     private String idStudent;
@@ -7,7 +6,6 @@ public class Student {
     private double mathScore;
     private double physicalScore;
     private double chemistryScore;
-
 
     public Student() {
 
@@ -82,18 +80,15 @@ public class Student {
     public double getChemistryScore() {
         return chemistryScore;
     }
-    public double getSumScore(){
-        return getMathScore()+getPhysicalScore()+getChemistryScore();
+
+    public double getSumScore() {
+        return getMathScore() + getPhysicalScore() + getChemistryScore();
     }
 
-    public void displaySinhVien() throws Exception
-    {
-        try
-        {
+    public void displaySinhVien() throws Exception {
+        try {
             System.out.printf(" %-10s | %-35s | %-9s | %-10.2f | %-10.2f | %-10.2f ", idStudent, fullName, sexStudent, mathScore, physicalScore, chemistryScore);
-        }
-        catch(Exception ex)
-        {
+        } catch (Exception ex) {
             throw ex;
         }
     }
