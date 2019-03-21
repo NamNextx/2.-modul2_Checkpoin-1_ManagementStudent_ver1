@@ -1,6 +1,6 @@
 
 public class Student {
-    private String idStudent;
+    private double idStudent;
     private String fullName;
     private String sexStudent;
     private double mathScore;
@@ -11,7 +11,7 @@ public class Student {
 
     }
 
-    public Student(String idStudent, String fullName, String sexStudent) {
+    public Student(double idStudent, String fullName, String sexStudent) {
         this.idStudent = idStudent;
         this.fullName = fullName;
         this.sexStudent = sexStudent;
@@ -23,7 +23,7 @@ public class Student {
         this.chemistryScore = chemistryScore;
     }
 
-    public Student(String idStudent, String fullName, String sexStudent, double mathScore, double physicalScore, double chemistryScore) {
+    public Student(double idStudent, String fullName, String sexStudent, double mathScore, double physicalScore, double chemistryScore) {
         this.idStudent = idStudent;
         this.fullName = fullName;
         this.sexStudent = sexStudent;
@@ -32,11 +32,11 @@ public class Student {
         this.chemistryScore = chemistryScore;
     }
 
-    public void setIdStudent(String idStudent) {
+    public void setIdStudent(double idStudent) {
         this.idStudent = idStudent;
     }
 
-    public String getIdStudent() {
+    public double getIdStudent() {
         return this.idStudent;
     }
 

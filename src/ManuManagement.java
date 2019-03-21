@@ -7,9 +7,9 @@ public class ManuManagement implements IStudentTest {
     ArrayList<Student> students = new ArrayList<>();
 
     public void addStudents() {
-        students.add(new Student("1", "Hoang van A", "male", 2, 1, 2));
-        students.add(new Student("4", "Hoang van B", "male", 2, 3, 2));
-        students.add(new Student("3", "Hoang van C", "male", 2, 2, 2));
+        students.add(new Student(1, "Hoang van A", "male", 2, 1, 2));
+        students.add(new Student(4, "Hoang van B", "male", 2, 3, 2));
+        students.add(new Student(3, "Hoang van C", "male", 2, 2, 2));
     }
 
     public static void printLine() {
@@ -55,12 +55,13 @@ public class ManuManagement implements IStudentTest {
 
     @Override
     public void addNewStudent() throws Exception {
-        BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
+//        BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
+        Scanner scanner=new Scanner(System.in);
         try {
-            String id;
+            double id;
             do {
                 System.out.println("Pls enter ID of student");
-                id = inputBuffer.readLine();
+                id = scanner.nextInt();
                 if (checkAlready(id)) {
                     System.out.println("Already have this id");
                 }
@@ -82,10 +83,10 @@ public class ManuManagement implements IStudentTest {
         }
     }
 
-    private boolean checkAlready(String id) throws Exception {
+    private boolean checkAlready(double id) throws Exception {
         try {
             for (Student student : students) {
-                if (student.getIdStudent().equalsIgnoreCase(id)) {
+                if (student.getIdStudent()==id) {
 
                     return true;
                 }
@@ -97,7 +98,7 @@ public class ManuManagement implements IStudentTest {
 
     }
 
-    public static void addElement(Student student, String id) {
+    public static void addElement(Student student, double id) {
         Scanner sc = new Scanner(System.in);
         BufferedReader inputBuffer = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -106,7 +107,6 @@ public class ManuManagement implements IStudentTest {
 
             do {
                 System.out.println("pls enter full name of student");
-                // dataInputString = inputBuffer.readLine();
                 student.setFullName(inputBuffer.readLine());
             }
             while (!CheckInput.checkFullName(student.getFullName()));
@@ -124,7 +124,6 @@ public class ManuManagement implements IStudentTest {
 
             do {
                 System.out.println("Pls enter physicalScore");
-                // dataInputInterger = sc.nextInt();
                 student.setPhysicalScore(sc.nextInt());
             }
             while (!CheckInput.checkScore(student.getPhysicalScore()));
@@ -186,10 +185,10 @@ public class ManuManagement implements IStudentTest {
         try {
             Scanner scanner = new Scanner(System.in);
 
-            String idIndex = scanner.nextLine();
+            double idIndex = scanner.nextInt();
             if (checkAlready(idIndex)) {
                 System.out.println("Pls input name you want to rename");
-                students.get(Integer.parseInt(idIndex) - 1).setFullName(scanner.nextLine());
+                students.get((int) (idIndex - 1)).setFullName(scanner.nextLine());
             } else {
                 System.out.println("Dont have this id in List");
             }
@@ -207,7 +206,7 @@ public class ManuManagement implements IStudentTest {
                 System.out.println("List Student is empty, choice 1 to import new Student");
             } else {
                 System.out.println("Pls input id of student you want to remove");
-                String idOfstudent = sc.nextLine();
+                double idOfstudent = sc.nextInt();
                 if (checkAlready(idOfstudent)) {
                     removeStudentAddIndex(idOfstudent);
                 } else System.out.println("Dont have student with this id");
@@ -219,9 +218,9 @@ public class ManuManagement implements IStudentTest {
     }
 
     @Override
-    public void removeStudentAddIndex(String idOfStudent) throws Exception {
+    public void removeStudentAddIndex(double idOfStudent) throws Exception {
         try {
-            int idInt = Integer.parseInt(idOfStudent);
+            int idInt =(int) idOfStudent;
             students.remove(idInt - 1);
             System.out.println("Removed");
         } catch (Exception ex) {
