@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManuManagement implements IStudentTest {
-    ArrayList<Student> students = new ArrayList<>();
 
+    ArrayList<Student> students = new ArrayList<>();
+    
     public void addStudents() {
         students.add(new Student(1, "Hoang van A", "male", 2, 1, 2));
         students.add(new Student(4, "Hoang van B", "male", 2, 3, 2));

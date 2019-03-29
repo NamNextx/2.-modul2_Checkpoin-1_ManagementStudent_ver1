@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class MainManagementStudent {
+public class Management {
 
     public static void main(String[] args) {
         try {
@@ -10,7 +10,6 @@ public class MainManagementStudent {
             manuManagement.addStudents();
 
             int selected;
-
             do {
                 ManuManagement.showManu();
 
